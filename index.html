@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎉</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- SCENE 0: INTRO -->
+    <div id="scene-0" class="scene active">
+        <!-- Background container with particles -->
+        <div class="scene-background scene-0-bg">
+            <!-- Floating stars -->
+            <div class="floating-stars">
+                <div class="star star-1"></div>
+                <div class="star star-2"></div>
+                <div class="star star-3"></div>
+                <div class="star star-4"></div>
+                <div class="star star-5"></div>
+                <div class="star star-6"></div>
+                <div class="star star-7"></div>
+                <div class="star star-8"></div>
+            </div>
+
+            <!-- Glowing particles -->
+            <div class="glowing-particles">
+                <div class="particle particle-1"></div>
+                <div class="particle particle-2"></div>
+                <div class="particle particle-3"></div>
+                <div class="particle particle-4"></div>
+                <div class="particle particle-5"></div>
+            </div>
+
+            <!-- Decorative lavender flowers (top-left) -->
+            <div class="flower flower-lavender flower-1"></div>
+            <!-- Decorative tulip (top-right) -->
+            <div class="flower flower-tulip flower-2"></div>
+            <!-- Decorative lavender (bottom-right) -->
+            <div class="flower flower-lavender flower-3"></div>
+        </div>
+
+        <!-- Paper note content -->
+        <div class="paper-note-container">
+            <div class="paper-note">
+                <div class="tape tape-left"></div>
+                <div class="tape tape-right"></div>
+                <p class="paper-text">A little something<br>special is waiting<br>for you...</p>
+                <div class="intro-countdown" aria-label="Countdown">
+                    <span id="intro-countdown-number">3</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCENE 1: CAKE + YES/NO -->
+    <div id="scene-1" class="scene">
+        <!-- Background container -->
+        <div class="scene-background scene-1-bg">
+            <!-- Floating decorative elements -->
+            <div class="floating-decorations">
+                <div class="cloud cloud-1"></div>
+                <div class="cloud cloud-2"></div>
+                <div class="balloon balloon-1"></div>
+                <div class="balloon balloon-2"></div>
+                <div class="balloon balloon-3"></div>
+            </div>
+
+            <!-- Stars -->
+            <div class="floating-stars-scene1">
+                <div class="star star-s1"></div>
+                <div class="star star-s2"></div>
+                <div class="star star-s3"></div>
+                <div class="star star-s4"></div>
+            </div>
+
+            <!-- Decorative flowers around edges -->
+            <div class="flower flower-lavender flower-corner-1"></div>
+            <div class="flower flower-tulip flower-corner-2"></div>
+            <div class="flower flower-lavender flower-corner-3"></div>
+            <div class="flower flower-tulip flower-corner-4"></div>
+        </div>
+
+        <!-- Main content -->
+        <div class="scene-1-content">
+            <h1 class="scene-heading">Are you ready for next?</h1>
+
+            <!-- Main composition: cake with teddy and bunny -->
+            <div class="composition-container scene1-real-composition">
+                <div class="scene1-character scene1-teddy-wrap">
+                    <img src="assets/illustrations/teddy.png.png" alt="Cute teddy" class="scene1-character-img scene1-teddy-img">
+                </div>
+
+                <div class="scene1-cake-wrap">
+                    <img src="assets/illustrations/cake.png.png" alt="Birthday cake" class="scene1-cake-img">
+                </div>
+
+                <div class="scene1-character scene1-bunny-wrap">
+                    <img src="assets/illustrations/bunny.png.png" alt="Cute bunny" class="scene1-character-img scene1-bunny-img">
+                </div>
+            </div>
+
+            <!-- Surrounding flowers -->
+            <div class="flower flower-tulip flower-around-1"></div>
+            <div class="flower flower-lavender flower-around-2"></div>
+            <div class="flower flower-tulip flower-around-3"></div>
+
+            <!-- Action buttons -->
+            <div class="button-container" id="button-row">
+                <button id="yes-btn" class="action-btn yes-btn">YES</button>
+                <button id="no-btn" class="action-btn no-btn" data-state="static">NO</button>
+            </div>
+        </div>
+
+        <!-- Celebration overlay (hidden by default) -->
+        <div id="celebration-overlay" class="celebration-overlay hidden">
+            <div class="celebration-content">
+                <div class="sparkles">
+                    <div class="sparkle sparkle-1"></div>
+                    <div class="sparkle sparkle-2"></div>
+                    <div class="sparkle sparkle-3"></div>
+                    <div class="sparkle sparkle-4"></div>
+                    <div class="sparkle sparkle-5"></div>
+                </div>
+                <div class="hearts">
+                    <div class="heart heart-1"></div>
+                    <div class="heart heart-2"></div>
+                    <div class="heart heart-3"></div>
+                </div>
+                <div class="confetti">
+                    <div class="confetti-piece c1"></div>
+                    <div class="confetti-piece c2"></div>
+                    <div class="confetti-piece c3"></div>
+                    <div class="confetti-piece c4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCENE 2: PENGUIN SURPRISE -->
+    <div id="scene-2" class="scene">
+        <!-- Background container -->
+        <div class="scene-background scene-2-bg">
+            <!-- Layered background decorations for depth -->
+            <div class="scene-2-layers">
+                <!-- Far background clouds -->
+                <div class="cloud-bg cloud-bg-1"></div>
+                <div class="cloud-bg cloud-bg-2"></div>
+                
+                <!-- Distant stars -->
+                <div class="stars-background">
+                    <div class="star-tiny star-tiny-1"></div>
+                    <div class="star-tiny star-tiny-2"></div>
+                    <div class="star-tiny star-tiny-3"></div>
+                    <div class="star-tiny star-tiny-4"></div>
+                </div>
+
+               <!-- Mid-ground clouds -->
+               <div class="cloud-mid cloud-mid-1"></div>
+               <div class="cloud-mid cloud-mid-2"></div>
+
+               <!-- Decorative flowers (background layer) -->
+               <div class="flower-scene2 flower-tulip flower-bottom-left"></div>
+               <div class="flower-scene2 flower-lavender flower-bottom-right"></div>
+               <div class="flower-scene2 flower-tulip flower-mid-left"></div>
+
+               <!-- Particles -->
+               <div class="sparkles-container">
+                   <div class="sparkle-particle sparkle-p1"></div>
+                   <div class="sparkle-particle sparkle-p2"></div>
+                   <div class="sparkle-particle sparkle-p3"></div>
+                   <div class="sparkle-particle sparkle-p4"></div>
+                   <div class="sparkle-particle sparkle-p5"></div>
+               </div>
+
+               <!-- Foreground clouds -->
+               <div class="cloud-fg cloud-fg-1"></div>
+                
+               <!-- Soft dreamy glow circle -->
+               <div class="dreamy-glow"></div>
+            </div>
+        </div>
+
+       <!-- Main content wrapper -->
+        <div class="scene-2-content scene2-reimagined-content">
+           <div class="scene2-board">
+               <img src="assets/final/confetti.png" alt="" class="scene2-piece scene2-confetti scene2-confetti-top">
+               <img src="assets/final/confetti.png" alt="" class="scene2-piece scene2-confetti scene2-confetti-bottom">
+               <img src="assets/final/purple-balloons.png" alt="" class="scene2-piece scene2-balloons-left">
+               <img src="assets/final/pink-balloons.png" alt="" class="scene2-piece scene2-balloons-right">
+               <img src="assets/decoration/cloud 1.png" alt="" class="scene2-piece scene2-cloud scene2-cloud-left">
+               <img src="assets/decoration/clouds 2.png" alt="" class="scene2-piece scene2-cloud scene2-cloud-right">
+               <img src="assets/final/pastel-stars.png" alt="" class="scene2-piece scene2-pastel-stars">
+               <img src="assets/final/gold-stars.png" alt="" class="scene2-piece scene2-gold-stars">
+               <img src="assets/final/white-spark-splatter.png" alt="" class="scene2-piece scene2-splatter-left">
+               <img src="assets/final/white-spark-splatter.png" alt="" class="scene2-piece scene2-splatter-right">
+               <img src="assets/scene4/heart-sticker-1.png" alt="" class="scene2-piece scene2-heart scene2-heart-1">
+               <img src="assets/scene4/heart-sticker-2.png" alt="" class="scene2-piece scene2-heart scene2-heart-2">
+               <img src="assets/scene4/heart-sticker-plainpink.png" alt="" class="scene2-piece scene2-heart scene2-heart-3">
+               <img src="assets/scene4/bow-single.png" alt="" class="scene2-piece scene2-bow scene2-bow-top">
+               <img src="assets/decoration/scrap 1.png" alt="" class="scene2-piece scene2-scrap scene2-scrap-top-left">
+               <img src="assets/decoration/scrap 2.png" alt="" class="scene2-piece scene2-scrap scene2-scrap-top-right">
+               <img src="assets/decoration/scrap 3.png" alt="" class="scene2-piece scene2-scrap scene2-scrap-bottom-left">
+               <img src="assets/final/purple-tulips.png" alt="" class="scene2-piece scene2-flower scene2-flower-left">
+               <img src="assets/decoration/lavender 2.png" alt="" class="scene2-piece scene2-flower scene2-flower-right">
+
+               <div class="scene2-paper-stack" aria-hidden="true">
+                   <div class="scene2-paper back-paper"></div>
+                   <div class="scene2-paper mid-paper"></div>
+                   <div class="scene2-main-note">
+                       <div class="scene2-note-clip"></div>
+                       <div class="scene2-note-hole scene2-hole-1"></div>
+                       <div class="scene2-note-hole scene2-hole-2"></div>
+                       <div class="scene2-note-hole scene2-hole-3"></div>
+                       <div class="scene2-note-hole scene2-hole-4"></div>
+                       <div class="scene2-note-hole scene2-hole-5"></div>
+                       <div class="scene2-note-hole scene2-hole-6"></div>
+                       <div class="scene2-note-tape scene2-tape-left"></div>
+                       <div class="scene2-note-tape scene2-tape-right"></div>
+                       <div class="scene2-note-content">
+                           <div class="scene2-title-line scene2-title-top">A great</div>
+                           <div class="scene2-title-line scene2-title-middle">surprise</div>
+                           <div class="scene2-title-line scene2-title-bottom">for you...</div>
+                       </div>
+                       <div class="scene2-note-doodle"></div>
+                   </div>
+               </div>
+
+               <div class="scene2-bunny-zone">
+                   <img src="assets/illustrations/bunny.png.png" alt="Cute bunny" class="scene2-bunny-art">
+               </div>
+
+               <button id="continue-btn" class="continue-btn-scene2">Tap to continue ✨</button>
+           </div>
+       </div>
+    </div>
+
+    <!-- SCENE 3: HANDWRITTEN BIRTHDAY NOTE -->
+    <div id="scene-3" class="scene">
+        <div class="scene-background scene-3-bg"></div>
+
+        <div class="scene-3-content">
+            <div class="letter-board">
+                <img src="assets/decoration/tulip 3.png" alt="" class="scene3-decor s3-envelope">
+                <img src="assets/decoration/hearts.png" alt="" class="scene3-decor s3-hearts">
+                <img src="assets/decoration/stars 2.png" alt="" class="scene3-decor s3-stars">
+                <img src="assets/decoration/lavender 1.png" alt="" class="scene3-decor s3-lavender-top-right">
+                <img src="assets/decoration/tulip 4.png" alt="" class="scene3-decor s3-bouquet-bottom-left">
+                <img src="assets/decoration/scrap 1.png" alt="" class="scene3-decor s3-scrap-bottom-right-1">
+                <img src="assets/decoration/scrap 2.png" alt="" class="scene3-decor s3-scrap-bottom-right-2">
+
+                <div class="letter-sheet">
+                    <div class="ring-holes" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="letter-tape tape-a"></div>
+                    <div class="letter-tape tape-b"></div>
+
+                    <h2 class="letter-title">Hey Akriti <span>♡</span></h2>
+
+                    <div class="letter-message-scroll">
+                        <div class="letter-copy">
+                            <p>Happy Birthday to my favorite human! 🎂</p>
+                            <p>You are such a special and wonderful person, and honestly, you deserve all the happiness, love, and beautiful moments in the world. 🌸</p>
+                            <p>Thank you for being there — for the laughs, the talks, the memories, and all those little moments that became so special. 💖</p>
+                            <p>You make life brighter, cuter, and a lot more fun just by being you. ✨</p>
+                            <p>On your special day, I just want to say that I’m really lucky to have you in my life, and I hope this year brings you endless smiles, peace, success, and everything your heart wishes for. 🌷</p>
+                            <p>Stay happy, stay adorable, and keep shining like the lovely star you are. 🌟</p>
+                            <p>And yes, enjoy your birthday properly... because today is all about you, birthday girl. 🎀</p>
+                        </div>
+
+                        <p class="letter-signoff">Lots of love <span>♡</span></p>
+                    </div>
+                </div>
+
+                <div class="mini-polaroid" aria-hidden="true">
+                    <div class="mini-photo"></div>
+                </div>
+            </div>
+
+            <button id="scene3-continue-btn" class="scene3-continue-btn">Continue ✨</button>
+        </div>
+    </div>
+
+
+    <!-- SCENE 4: PHOTO MEMORIES SCRAPBOOK -->
+    <div id="scene-4" class="scene">
+        <div class="scene-background scene-4-bg"></div>
+
+        <div class="scene-4-content">
+            <div class="memory-board">
+                <img src="assets/scene4/scrapbook-corners.png" alt="" class="memory-decor m-decor-scrap-top-left">
+                <img src="assets/scene4/scrapbook-corners.png" alt="" class="memory-decor m-decor-scrap-bottom-right">
+                <img src="assets/scene4/bow-single.png" alt="" class="memory-decor m-decor-bows-top">
+                <img src="assets/scene4/arrows.png" alt="" class="memory-decor m-decor-arrows-left">
+                <img src="assets/scene4/teddy-heart.png" alt="" class="memory-decor m-decor-teddy-bottom">
+                <img src="assets/scene4/bunny-note.png" alt="" class="memory-decor m-decor-bunny-note">
+                <img src="assets/decoration/lavender 2.png" alt="" class="memory-decor m-decor-lavender-left">
+                <img src="assets/decoration/tulip 5.png" alt="" class="memory-decor m-decor-tulip-right">
+                <img src="assets/decoration/hearts.png" alt="" class="memory-decor m-decor-hearts-top-right">
+                <img src="assets/decoration/stars 1.png" alt="" class="memory-decor m-decor-stars-top-left">
+
+                <div class="memory-header">
+                    <div class="memory-chip">Photo Memories ✨</div>
+                    <h2 class="memory-title">Little moments, big memories</h2>
+                    <p class="memory-subtitle">some of my favorite pictures of you and us ♡</p>
+                </div>
+
+                <div class="memory-note-text">best<br>moments</div>
+
+                <div class="memory-grid">
+                    <article class="memory-card memory-hero">
+                        <img src="assets/scene4/heart-sticker-1.png" alt="" class="photo-heart sticker-heart-top-right">
+                        <div class="memory-photo-wrap">
+                            <img src="assets/memories/akriti-window.png" alt="Memory photo" class="memory-photo">
+                        </div>
+                        <div class="memory-caption">pretty as always</div>
+                    </article>
+
+                    <article class="memory-card memory-small rotate-left">
+                        <div class="memory-photo-wrap">
+                            <img src="assets/memories/akriti-railing.png" alt="Memory photo" class="memory-photo">
+                        </div>
+                        <div class="memory-caption">that soft smile</div>
+                    </article>
+
+                    <article class="memory-card memory-small rotate-right">
+                        <div class="memory-photo-wrap">
+                            <img src="assets/memories/akriti-maroon-dress.png" alt="Memory photo" class="memory-photo">
+                        </div>
+                        <div class="memory-caption">main character energy</div>
+                    </article>
+
+                    <article class="memory-card memory-wide rotate-left-soft">
+                        <div class="memory-photo-wrap">
+                            <img src="assets/memories/us-close-mirror.png" alt="Memory photo" class="memory-photo">
+                        </div>
+                        <div class="memory-caption">our cute click</div>
+                    </article>
+
+                    <article class="memory-card memory-small rotate-right-soft">
+                        <img src="assets/scene4/heart-sticker-stitched.png" alt="" class="photo-heart sticker-heart-bottom-left">
+                        <div class="memory-photo-wrap">
+                            <img src="assets/memories/us-fun-mirror.png" alt="Memory photo" class="memory-photo">
+                        </div>
+                        <div class="memory-caption">our silly moment</div>
+                    </article>
+
+                    <article class="memory-card memory-small rotate-left-soft">
+                        <div class="memory-photo-wrap">
+                            <img src="assets/memories/us-full-mirror.png" alt="Memory photo" class="memory-photo">
+                        </div>
+                        <div class="memory-caption">us, being us</div>
+                    </article>
+                </div>
+            </div>
+
+            <button id="scene4-continue-btn" class="scene4-continue-btn">Continue ✨</button>
+        </div>
+    </div>
+
+
+    <!-- SCENE 5: HEART SURPRISE TRANSITION -->
+    <div id="scene-5" class="scene">
+        <div class="scene-background scene-5-bg"></div>
+
+        <div class="scene-5-content">
+            <div class="heart-surprise-board">
+                <img src="assets/final/confetti.png" alt="" class="scene5-decor scene5-confetti scene5-confetti-top">
+                <img src="assets/final/confetti.png" alt="" class="scene5-decor scene5-confetti scene5-confetti-bottom">
+                <img src="assets/final/purple-balloons.png" alt="" class="scene5-decor scene5-balloons-left">
+                <img src="assets/final/pink-balloons.png" alt="" class="scene5-decor scene5-balloons-right">
+                <img src="assets/final/pastel-stars.png" alt="" class="scene5-decor scene5-pastel-stars-left">
+                <img src="assets/final/gold-stars.png" alt="" class="scene5-decor scene5-gold-stars-right">
+                <img src="assets/final/white-spark-splatter.png" alt="" class="scene5-decor scene5-splatter-left">
+                <img src="assets/final/white-spark-splatter.png" alt="" class="scene5-decor scene5-splatter-right">
+                <img src="assets/final/cute-star.png" alt="" class="scene5-decor scene5-cute-star">
+                <img src="assets/decoration/scrap 1.png" alt="" class="scene5-decor scene5-scrap-top-left">
+                <img src="assets/decoration/scrap 2.png" alt="" class="scene5-decor scene5-scrap-top-right">
+                <img src="assets/scene4/bow-single.png" alt="" class="scene5-decor scene5-bow-top-right">
+                <img src="assets/scene4/heart-sticker-1.png" alt="" class="scene5-decor scene5-heart-sticker-1">
+                <img src="assets/scene4/heart-sticker-plainpink.png" alt="" class="scene5-decor scene5-heart-sticker-2">
+                <img src="assets/scene4/heart-sticker-stitched.png" alt="" class="scene5-decor scene5-heart-sticker-3">
+                <img src="assets/scene4/teddy-heart.png" alt="" class="scene5-decor scene5-teddy-heart">
+                <img src="assets/decoration/tulip 4.png" alt="" class="scene5-decor scene5-flower-left">
+                <img src="assets/decoration/lavender 1.png" alt="" class="scene5-decor scene5-flower-right">
+                <img src="assets/decoration/tulip 5.png" alt="" class="scene5-decor scene5-flower-right-secondary">
+
+                <div class="scene5-title-pill">One more cute surprise ✨</div>
+
+                <div class="scene5-heart-stage">
+                    <div class="scene5-cloud-glow"></div>
+                    <img src="assets/decoration/cloud 1.png" alt="" class="scene5-stage-decor scene5-stage-cloud-left">
+                    <img src="assets/decoration/clouds 2.png" alt="" class="scene5-stage-decor scene5-stage-cloud-right">
+                    <img src="assets/scene5/glossy-heart.png" alt="Glossy pink heart" id="scene5-heart-trigger" class="scene5-heart-image">
+                </div>
+
+                <div class="scene5-note-card">
+                    <span class="scene5-note-tape scene5-note-tape-left"></span>
+                    <span class="scene5-note-tape scene5-note-tape-right"></span>
+                    <p class="scene5-message">Wait... there’s one more thing.</p>
+                    <div class="scene5-heart-btn scene5-heart-hint">Tap the heart</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- SCENE 6: FINAL BIRTHDAY WISH -->
+    <div id="scene-6" class="scene">
+        <div class="scene-background scene-6-bg"></div>
+        <div class="scene-6-content">
+            <div class="final-scene-board">
+                <img src="assets/final/confetti.png" alt="" class="final-decor final-confetti final-confetti-top">
+                <img src="assets/final/confetti.png" alt="" class="final-decor final-confetti final-confetti-bottom">
+                <img src="assets/final/white-spark-splatter.png" alt="" class="final-decor final-splatter-left">
+                <img src="assets/final/gold-stars.png" alt="" class="final-decor final-gold-stars-right">
+                <img src="assets/final/pastel-stars.png" alt="" class="final-decor final-pastel-stars-left">
+                <img src="assets/final/cute-star.png" alt="" class="final-decor final-cute-star-top">
+                <img src="assets/scene4/bow-single.png" alt="" class="final-decor final-bow-left">
+                <img src="assets/scene4/heart-sticker-plainpink.png" alt="" class="final-decor final-heart-center">
+                <img src="assets/scene4/heart-sticker-stitched.png" alt="" class="final-decor final-heart-right">
+
+                <img src="assets/final/purple-balloons.png" alt="" class="final-decor final-balloons-left">
+                <img src="assets/final/pink-balloons.png" alt="" class="final-decor final-balloons-right">
+
+                <div class="final-heading-block">
+                    <img src="assets/final/happy-birthday-text.png" alt="Happy Birthday" class="final-happy-birthday">
+                    <h2 class="final-name">Akriti</h2>
+                    <p class="final-subtitle">My Bestie! 💕</p>
+                </div>
+
+                <div class="final-note-card">
+                    <span class="note-tape tape-left"></span>
+                    <span class="note-tape tape-right"></span>
+                    <div class="note-rule note-rule-1"></div>
+                    <div class="note-rule note-rule-2"></div>
+                    <div class="note-rule note-rule-3"></div>
+                    <div class="note-rule note-rule-4"></div>
+                    <div class="note-rule note-rule-5"></div>
+                    <p>May your day be as beautiful and amazing as you are!<br>Keep smiling, keep shining,<br>and always know that I’m always here for you! 🥰</p>
+                </div>
+
+                <button id="scene6-replay-btn" class="final-replay-btn" type="button" aria-label="Replay from the beginning">
+                    <span class="final-replay-icon" aria-hidden="true">↻</span>
+                    <span class="final-replay-text">Replay</span>
+                </button>
+
+                <img src="assets/final/teddy-heart-new.png" alt="Cute teddy bear holding a heart" class="final-teddy">
+                <img src="assets/final/purple-tulips.png" alt="" class="final-flowers final-flowers-left">
+                <img src="assets/final/purple-tulips.png" alt="" class="final-flowers final-flowers-right">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Background music -->
+    <audio id="bg-music" src="assets/audio/background.mp3" preload="auto" loop></audio>
+    <button id="music-toggle" class="music-toggle" type="button"
+            aria-label="Play background music" title="Music">
+        <span id="music-toggle-icon" aria-hidden="true">🎵</span>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
