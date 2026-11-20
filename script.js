@@ -20,7 +20,7 @@ const scene3LetterCopy = document.querySelector('.letter-copy');
 const scene3LetterParagraphs = scene3LetterCopy ? Array.from(scene3LetterCopy.querySelectorAll('p')) : [];
 const scene3LetterSignoff = document.querySelector('.letter-signoff');
 
-const scene3TypewriterDuration = 10000;
+const scene3TypewriterDuration = 10500;
 let scene3TypewriterTimer = null;
 let scene3StoredParagraphTexts = [];
 let scene3StoredSignoffText = '';
@@ -279,13 +279,22 @@ function triggerCelebration() {
 // ==================== NO BUTTON INTERACTION ====================
 
 let yesBtnScale = 1;
-const yesScaleIncrement = 0.1; // Grow by 10% every time NO escapes; intentionally no maximum.
+const yesScaleIncrement = window.innerWidth <= 768 ? 0.2 : 0.1; // Restore the original faster mobile growth; desktop remains unchanged.
 let noInteractionStarted = false;
 
 function activateNoButton() {
     if (noInteractionStarted) return;
     noInteractionStarted = true;
+
+    // Preserve the button's exact on-screen position while switching it from
+    // normal flow to fixed positioning. Commit that starting frame before the
+    // first destination is applied so the very first escape animates smoothly.
+    const startRect = noBtn.getBoundingClientRect();
+    noBtn.style.position = 'fixed';
+    noBtn.style.left = startRect.left + 'px';
+    noBtn.style.top = startRect.top + 'px';
     noBtn.setAttribute('data-state', 'active');
+    void noBtn.offsetWidth;
 }
 
 function moveNoButton() {
@@ -342,32 +351,30 @@ if (window.innerWidth > 768) {
         }
     });
 }
-// Mobile: NO button moves before tap/touch
-else {
-    noBtn.addEventListener('pointerdown', (e) => {
-        e.preventDefault();
+// Start music and move NO from the first completed tap/click.
+// Use click (rather than pointerdown/touchstart): some mobile browsers only
+// grant reliable audio activation on click, and preventing pointer defaults can
+// suppress that click entirely. Request playback before moving the button.
+noBtn.addEventListener('click', (event) => {
+    startBackgroundMusic();
+    if (window.innerWidth <= 768) {
+        event.preventDefault();
         moveNoButton();
-    });
-    
-    noBtn.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        moveNoButton();
-    });
+    }
+}, true);
+
+// Desktop hover can still start music when the user first approaches NO.
+if (window.innerWidth > 768) {
+    noBtn.addEventListener('mouseenter', () => {
+        startBackgroundMusic();
+    }, { once: true });
 }
 
 // ==================== RESPONSIVE ADJUSTMENTS ====================
 
 window.addEventListener('resize', () => {
-    // Reset state if window resizes to different breakpoint
-    if (window.innerWidth > 768) {
-        noBtn.removeEventListener('pointerdown', moveNoButton);
-        noBtn.removeEventListener('touchstart', moveNoButton);
-        noBtn.addEventListener('mouseenter', moveNoButton);
-    } else {
-        noBtn.removeEventListener('mouseenter', moveNoButton);
-        noBtn.addEventListener('pointerdown', moveNoButton);
-        noBtn.addEventListener('touchstart', moveNoButton);
-    }
+    // The NO interaction mode is selected at interaction time, so no touch or
+    // pointer listeners need to be re-bound when the viewport changes.
 });
 
 // ==================== SCENE 2 CONTINUE BUTTON ====================
@@ -419,6 +426,7 @@ const musicToggle = document.getElementById('music-toggle');
 const musicToggleIcon = document.getElementById('music-toggle-icon');
 
 let backgroundMusicStarted = false;
+let backgroundMusicStarting = false;
 let backgroundMusicMuted = false;
 
 if (bgMusic) {
@@ -447,8 +455,9 @@ function updateMusicButton() {
 }
 
 async function startBackgroundMusic() {
-    if (!bgMusic || backgroundMusicStarted) return;
+    if (!bgMusic || backgroundMusicStarted || backgroundMusicStarting) return;
 
+    backgroundMusicStarting = true;
     try {
         bgMusic.muted = false;
         await bgMusic.play();
@@ -456,24 +465,12 @@ async function startBackgroundMusic() {
         backgroundMusicMuted = false;
         updateMusicButton();
     } catch (error) {
-        // Mobile browsers can block audio until a valid user gesture.
+        // If the browser rejects playback, allow the next genuine user gesture to retry.
         updateMusicButton();
+    } finally {
+        backgroundMusicStarting = false;
     }
 }
-
-function handleFirstMusicInteraction(event) {
-    if (event.target.closest && event.target.closest('#music-toggle')) return;
-
-    startBackgroundMusic();
-
-    document.removeEventListener('pointerdown', handleFirstMusicInteraction, true);
-    document.removeEventListener('touchstart', handleFirstMusicInteraction, true);
-    document.removeEventListener('click', handleFirstMusicInteraction, true);
-}
-
-document.addEventListener('pointerdown', handleFirstMusicInteraction, true);
-document.addEventListener('touchstart', handleFirstMusicInteraction, true);
-document.addEventListener('click', handleFirstMusicInteraction, true);
 
 if (musicToggle) {
     musicToggle.addEventListener('click', async (event) => {
